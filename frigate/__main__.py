@@ -4,7 +4,11 @@ import signal
 import sys
 import threading
 
-from pydantic import ValidationError
+try:
+    from pydantic import ValidationError
+except ImportError:
+    print("Failed to import 'pydantic'. Please make sure it is installed.")
+    sys.exit(1)
 
 from frigate.app import FrigateApp
 from frigate.config import FrigateConfig
